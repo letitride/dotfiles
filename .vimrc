@@ -98,7 +98,9 @@ noremap j gj
 noremap k gk
 " クリップボードの操作
 "set clipboard+=unnamed
-
+" 全角スペースの表示
+highlight JpSpace cterm=underline ctermfg=7 guifg=7
+au BufRead,BufNew * match JpSpace /　/
 
 " 新しい行はC言語スタイルのインデント
 set cindent
@@ -109,7 +111,17 @@ set smartindent
 set expandtab
 " 4tab
 set ts=4
+" tab表示の「見た目」
+set tabstop=4
+" Tab>キーを押した時に挿入される空白の量
+set softtabstop=4
+" 自動的に挿入されるインデントの幅
+set shiftwidth=4
 
+" backspaceキーの操作
+set backspace=indent,eol,start
+" 保存しないで他のファイルを表示
+set hidden
 
 " インクリメンタル検索を有効
 set incsearch
@@ -124,4 +136,19 @@ set nowrapscan
 
 " 入力時に対となる(){}の報告
 set showmatch
+
+" 範囲選択インデント時のvモード継承
+vnoremap < <gv
+vnoremap > >gv
+
+" 1画面下へ移動　キー割り当て
+nnoremap <C-H>   <C-F>
+nnoremap <SPACE> <C-F>
+" 1画面上へ移動　キー割り当て
+nnoremap <C-L>   <C-B>
+" 1行下へスクロール
+nnoremap <C-J>   <C-E>
+" 1行上へスクロール
+nnoremap <C-K>   <C-Y>
+
 
