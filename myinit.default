@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+#    /etc/rc.d/init.d/myinit.default
+#
+# Starts the test daemon(test version)
+#
+# chkconfig: 345 99 01
+# description: myinit.default
+SERVICE_NAME=myinit.default
+USER=work_user
+DIR=/script_dir/
+FILE=script_file
+COMMAND=$DIR$FILE
+start() {
+    chmod 755 $DIR$FILE
+    su -l $USER -c $COMMAND &
+    echo "service $SERVICE_NAME [start]"
+}
+stop() {
+    pkill $FILE
+    echo "service $SERVICE_NAME [stop]"
+}
+status() {
+   PID=`pgrep $FILE | wc -l`
+   if [ $PID -eq 0 ]; then
+       echo "$SERVICE_NAME stop"
+   else
+       echo "running $SERVICE_NAME..."
+   fi
+}
+
+case $1 in
+start)
+       start
+       ;;
+stop)
+       stop
+       ;;
+status)
+       status
+       ;;
+restart)
+       stop
+       start
+       ;;
+*)
+       echo "Usage: $SERVICE_NAME [start|stop|restart|status]"
+       ;;
+esac
+exit 0
