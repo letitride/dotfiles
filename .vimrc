@@ -150,5 +150,6 @@ nnoremap <C-L>   <C-B>
 nnoremap <C-J>   <C-E>
 " 1行上へスクロール
 nnoremap <C-K>   <C-Y>
+nnoremap ;;   <Esc>
 
 
