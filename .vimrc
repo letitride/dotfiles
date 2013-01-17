@@ -145,7 +145,7 @@ vnoremap > >gv
 nnoremap <C-H>   <C-F>
 nnoremap <SPACE> <C-F>
 " 1画面上へ移動　キー割り当て
-nnoremap <C-L>   <C-B>
+nnoremap b   <C-B>
 " 1行下へスクロール
 nnoremap <C-J>   <C-E>
 " 1行上へスクロール
